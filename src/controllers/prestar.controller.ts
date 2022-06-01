@@ -1,7 +1,26 @@
 import { Request, Response } from "express";
+import { Ejemplar } from "../models/Ejemplar";
 import { Prestar, PrestarI } from "../models/Prestar";
+import { Usuario } from "../models/Usuario";
 
 export class PrestarController {
+
+    // public async getAllPrestar(req: Request, res:Response){
+    //     try {
+    //         const prestar: Prestar[] = await Prestar.findAll(
+    //           {
+    //             attributes:["id","fecha_pres", "fecha_dev","EjemplarId"],
+    //             include:{
+    //               model:Usuario,
+    //               attributes: ['nombre']
+    //             }
+    //           }
+    //         ) // select * from ventas;
+    //         res.status(200).json({prestar})
+    //     } catch (error) {
+            
+    //     }
+    // }
 
     public async getAllPrestar(req:Request,res:Response) {
         try {

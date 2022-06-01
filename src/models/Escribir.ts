@@ -5,6 +5,7 @@ import { Autor } from "./Autor";
 
 
 export class Escribir extends Model {
+    public id!: number;
     public Fecha!: Date;
     public AutorId!: number;
     public LibroId!: number;
@@ -37,6 +38,7 @@ Escribir.init(
         timestamps: false
     }
 )
+
 
 Autor.belongsToMany(Libro, { through:  Escribir });
 Libro.belongsToMany(Autor, { through: Escribir });

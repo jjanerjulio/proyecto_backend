@@ -10,5 +10,6 @@ export class EscribirRouter {
         app.route("/escrito").post(this.escribirController.createEscribir);
         app.route("/escrito/:id").patch(this.escribirController.updateEscribir);
         app.route("/delete/escrito/:id").patch(this.escribirController.deleteEscribir);
+        /* app.route("/ventasCond1/:fechaI/:fechaF").get(this.escribirController.getVentasCondicion1)*/
     }
 }

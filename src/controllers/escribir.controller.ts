@@ -1,13 +1,20 @@
 import { Request, Response } from "express";
 import { Escribir, EscribirI } from "../models/Escribir";
+import { Autor, AutorI } from "../models/Autor";
 
 export class EscribirController {
 
     public async getAllEscribir(req:Request,res:Response) {
         try {
-            const escribir: EscribirI[] = await Escribir.findAll({
-                where:{activo:true}
-            });
+            const escribir: EscribirI[] = await Escribir.findAll(
+                // {
+                //     attributes:["Fecha"],
+                //     include:{
+                //         model:Autor,
+                //         attributes: ['nombre']
+                //     }
+                // }
+            );
             res.status(200).json({escribir});
         } catch (error) {
             

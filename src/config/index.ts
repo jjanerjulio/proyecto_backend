@@ -1,5 +1,6 @@
 import express, {Application} from "express";
 import {Routes} from "../routes/index";
+var cors = require ("cors");
 
 
 export class App {
@@ -25,6 +26,7 @@ export class App {
 
     middlewares() {
         this.app.use(express.json());
+        this.app.use(cors());
         this.app.use(express.urlencoded({extended: false}));
     }
 
