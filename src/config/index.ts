@@ -1,6 +1,6 @@
 import express, {Application} from "express";
 import {Routes} from "../routes/index";
-
+import cors from "cors"
 
 export class App {
     app: Application;
@@ -16,6 +16,7 @@ export class App {
 
     settings() {
         this.app.set("port", this.port || process.env.PORT || 3000);
+        this.app.use(cors());
     }
 
     async listen() {

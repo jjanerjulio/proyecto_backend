@@ -6,11 +6,11 @@ export class AutorController {
     public async getAllAutor(req:Request,res:Response) {
         try {
             const autor: AutorI[] = await Autor.findAll({
-                where:{activo:true}
+                where:{nombre:'teven'}
             });
             res.status(200).json({autor});
         } catch (error) {
-            
+            res.status(500).json({msg:`Error internal: ${error}`});
         }
     }
 
@@ -24,7 +24,7 @@ export class AutorController {
             );
             res.status(200).json({autor});
         } catch (error) {
-            res.status(500).json({msg:"Error internal"});
+            res.status(500).json({msg:`Error internal: ${error}`});
             
         }
     }
@@ -43,7 +43,7 @@ export class AutorController {
             const autor = await Autor.create({...body});
             res.status(200).json({autor});
         } catch (error){
-
+            res.status(500).json({msg:`Error internal: ${error}`});
         }
     }
 
@@ -64,7 +64,7 @@ export class AutorController {
             if(!autorExist) return res.status(400).json({mns:"Autor no existe"});
             await Autor.update(body,{where: {id:pk}});
         }catch (error){
-
+            res.status(500).json({msg:`Error internal: ${error}`});
         }
 
         const autor: AutorI | null = await Autor.findByPk(pk);
@@ -83,7 +83,7 @@ export class AutorController {
 
             return res.status(200).json({msg:"Autor Eliminado"})
         }catch (error){
-
+            res.status(500).json({msg:`Error internal: ${error}`});
         }
 
         const autor: AutorI | null = await Autor.findByPk(pk);

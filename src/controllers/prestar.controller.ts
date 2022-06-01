@@ -1,19 +1,55 @@
 import { Request, Response } from "express";
 import { Prestar, PrestarI } from "../models/Prestar";
+const Sequelize = require('sequelize');
+const {gte, lte} = Sequelize.Op;
 
 export class PrestarController {
 
     public async getAllPrestar(req:Request,res:Response) {
         try {
             const prestar: PrestarI[] = await Prestar.findAll({
-                where:{activo:true}
+                where:{
+                    activo:true
+                }
             });
             res.status(200).json({prestar});
         } catch (error) {
-            
+            res.status(500).json({msg:error})
+        }
+    }
+    public async getPrestamosEntredosFechas(req:Request,res:Response) {
+        const {
+            fecha_inicial, 
+            fecha_final
+        }= req.body;
+        try {
+            const prestar: PrestarI[] = await Prestar.findAll({
+                where:{
+                    activo:true,
+                    fecha_pres: {
+                        [gte]: fecha_inicial
+                    },
+                    fecha_dev: {
+                        [lte]: fecha_final
+                    }
+                }
+            });
+            res.status(200).json({prestar});
+        } catch (error) {
+            res.status(500).json({msg:error})
         }
     }
 
+    /*
+                attr1: {
+                    [gt]: 50   --- > attr1 > 50 gt = greater than; gte = greater than or equal 
+                    },
+
+                    attr2: {
+                    [lte]: 45  -- > attr2 <= 50 = lesser than or equal to 
+                    },
+
+*/
     public async getOnePrestar(req:Request,res:Response) {
         const {id: idParam}= req.params;
         try {

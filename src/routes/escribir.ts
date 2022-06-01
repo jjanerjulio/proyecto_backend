@@ -7,8 +7,8 @@ export class EscribirRouter {
 
     public routes(app: Application): void {
         app.route("/escritos").get(this.escribirController.getAllEscribir);
-        app.route("/escrito").post(this.escribirController.createEscribir);
-        app.route("/escrito/:id").patch(this.escribirController.updateEscribir);
-        app.route("/delete/escrito/:id").patch(this.escribirController.deleteEscribir);
+        app.route("/escritos").post(this.escribirController.createEscribir);
+        app.route("/escritos/:id").patch(this.escribirController.updateEscribir);
+        app.route("/escritos/:id/delete").patch(this.escribirController.deleteEscribir);
     }
 }
