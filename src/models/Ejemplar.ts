@@ -13,7 +13,6 @@ export interface EjemplarI {
     localizacion: string;
     LibroId: number;
     activo: boolean;
-
 }
 
 Ejemplar.init(

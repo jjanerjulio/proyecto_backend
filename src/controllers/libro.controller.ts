@@ -3,16 +3,19 @@ import { Libro, LibroI } from "../models/Libro";
 
 export class LibroController {
 
-    public async getAllLibro(req:Request,res:Response) {
-        try {
-            const libro: LibroI[] = await Libro.findAll({
-                where:{activo:true}
-            });
-            res.status(200).json({libro});
-        } catch (error) {
-            
+    public async getAllLibro(req: Request, res: Response){
+        try{
+            const libro: LibroI[] = await Libro.findAll(
+                {
+                    where: {activo : true}
+                }
+            )  //select * from usuarios;
+            res.status(200).json({libro})
+        } catch(error){
+
         }
     }
+
 
     public async getOneLibro(req:Request,res:Response) {
         const {id: idParam}= req.params;

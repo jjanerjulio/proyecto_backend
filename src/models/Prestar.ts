@@ -18,7 +18,6 @@ export interface PrestarI {
     UsuarioId: number;
     EjemplarId: number;
     activo: boolean;
-
 }
 
 Prestar.init(

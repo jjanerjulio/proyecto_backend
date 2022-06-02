@@ -7,7 +7,7 @@ export class EjemplarRouter {
 
     public routes(app: Application): void {
         app.route("/ejemplares").get(this.ejemplarController.getAllEjemplar);
-        app.route("/ejemplar").post(this.ejemplarController.createEjemplar);
+        app.route("/ejemplares").post(this.ejemplarController.createEjemplar);
         app.route("/ejemplar/:id").patch(this.ejemplarController.updateEjemplar);
         app.route("/delete/ejemplar/:id").patch(this.ejemplarController.deleteEjemplar);
     }

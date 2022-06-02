@@ -7,7 +7,7 @@ export class UsuarioRouter {
 
     public routes(app: Application): void {
         app.route("/usuarios").get(this.usuarioController.getAllUsuario);
-        app.route("/usuario").post(this.usuarioController.createUsuario);
+        app.route("/usuarios").post(this.usuarioController.createUsuario);
         app.route("/usuario/:id").patch(this.usuarioController.updateUsuario);
         app.route("/delete/usuario/:id").patch(this.usuarioController.deleteUsuario);
     }
